@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h3>Agenda Item #<%= @agenda_item.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Start time</dt>
+      <dd><%= @agenda_item.start_time.hour %>:<%= @agenda_item.start_time.min %> </dd>
+
+      <dt>End time</dt>
+      <dd><%= @agenda_item.end_time.hour %>:<%= @agenda_item.end_time.min %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @agenda_item.description %></dd>
+
+      <dt>Planning Status</dt>
+      <dd><%= @agenda_item.status %></dd>
+
+      <dt>Event</dt>
+      <dd><%= @agenda_item.event.description %></dd>
+
+      <dt>Leader</dt>
+      <dd><%= @agenda_item.leader %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/agenda_items" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/agenda_items/<%= @agenda_item.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_agenda_item/<%= @agenda_item.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

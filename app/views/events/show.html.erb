@@ -1,0 +1,69 @@
+<div class="page-header">
+  <h1><%= @event.description%></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+
+
+      <dt>Day</dt>
+      <dd><%= @event.day.day_of_week %></dd>
+
+      <dt>Start time</dt>
+      <dd><%= @event.start_time.hour %>:<%= @event.start_time.min %></dd>
+
+      <dt>End time</dt>
+      <dd><%= @event.end_time.hour %>:<%= @event.end_time.min %></dd>
+
+<h3>Agenda</h3>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+  <th>Start</th>
+  <th>End</th>
+  <th>Description</th>
+</tr>
+
+      <% @event.agenda_itms.each do |agenda_items| %>
+      <tr>
+
+        <td><%= agenda_items.start_time.hour %>:<%= agenda_items.start_time.min %> </td>
+        <td> <%= agenda_items.end_time.hour %>:<%= agenda_items.end_time.min %> </td>
+        <td><li class="list-group-item">
+                      <a href="/agenda_items/<%= agenda_items.id %>">
+                        <%= agenda_items.description %>
+                      </a>
+                    </li>
+                  </td>
+                    <td>
+                      <a href="/agenda_items/<%= agenda_items.id %>" class="btn btn-primary">Show</a>
+                      <a href="/agenda_items/<%= agenda_items.id %>/edit" class="btn btn-warning">Edit</a>
+                      <a href="/delete_agenda_item/<%= agenda_items.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                    </td>
+
+                      </tr>
+
+
+                      </div>
+                      </div>
+                    <% end %>
+                      </table>
+<h4> <a href="/agenda_items/new">Add a new item to the agenda</a></h4>
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/events" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/events/<%= @event.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_event/<%= @event.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+
+  </div>
+</div>
